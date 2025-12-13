@@ -1,8 +1,3 @@
-<h1 align="center">
-  <img src="https://i.ibb.co/fzQLr4rQ/Chat-GPT-Image-22-6-2025-20-26-20.png" alt="Chat-GPT-Image-22-6-2025-20-26-20" border="0" width="600px">
-  <br>
-</h1>
-
 <h4 align="center">Trilateration Coordinate Finder</h4>
 
 <p align="center">
