@@ -45,11 +45,6 @@ The closer the θₙ gets to Δₙ the closer the coordinate is to unknown locat
   <br>
 </h1>
 
-<h1 align="center">
-  <img src="https://i.ibb.co/rKWbb8cq/Drawing-2025-05-02-16-33-50-excalidraw.png" alt="Drawing-2025-05-02-16-33-50-excalidraw" border="0" width="1000px">
-  <br>
-</h1>
-
 # USAGE
 
 Three coordinates in `lat, lng` format + their distance to α (9 numbers in total) are required
