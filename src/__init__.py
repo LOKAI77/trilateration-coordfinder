@@ -4,7 +4,7 @@ A high-precision geospatial trilateration solver using multiple optimization met
 """
 
 __version__ = "1.0.0"
-__author__ = "Lukáš Klíma"
+__author__ = "LOKAI77"
 
 from .solver import (
     trilateration_objective,
