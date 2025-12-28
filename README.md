@@ -98,26 +98,6 @@ The solver provides residuals (distance errors) for each reference point:
 - scipy >= 1.7.0
 - geopy >= 2.2.0
 
-## Development
-
-### Setup Development Environment
-
-```bash
-git clone https://github.com/yourusername/trilateration-coordfinder.git
-cd trilateration-coordfinder
-pip install -e ".[dev]"
-```
-
-### Run Tests
-
-```bash
-pytest
-```
-
-## License
-
-MIT License - see LICENSE file for details
-
 ## Author
 
 LOKAI77
