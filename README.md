@@ -13,18 +13,10 @@ High-precision geospatial trilateration solver using multiple optimization metho
 
 ## Installation
 
-### From PyPI (when published)
+### From PyPI
 
 ```bash
 pip install trilateration-coordfinder
-```
-
-### From Source
-
-```bash
-git clone https://github.com/yourusername/trilateration-coordfinder.git
-cd trilateration-coordfinder
-pip install -e .
 ```
 
 ## Usage
