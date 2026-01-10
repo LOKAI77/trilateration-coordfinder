@@ -206,6 +206,8 @@ def main():
         log("Status: Precision refinement failed to pinpoint exact location (non-optimal)")
     elif any(100 < err <= 5000 for err in best_errors):
         log("Status: Precision refinement failed to pinpoint exact location (sub-optimal)")
+    elif any(1 < err <= 100 for err in best_errors):
+        log("Status: Precision refinement failed to pinpoint exact location (near-optimal)")
     elif all(err < 1 for err in best_errors):
         log("Status: RMS error < 1m, precise result found (optimal)")
 
