@@ -18,15 +18,15 @@ from .solver import (
 )
 
 LOGO = r"""
-  /$$$$$$                                      /$$  /$$$$$$  /$$                 /$$                    
- /$$__  $$                                    | $$ /$$__  $$|__/                | $$                    
-| $$  \__/  /$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$$| $$  \__/ /$$ /$$$$$$$   /$$$$$$$  /$$$$$$   /$$$$$$ 
+  /$$$$$$                                      /$$  /$$$$$$  /$$                 /$$
+ /$$__  $$                                    | $$ /$$__  $$|__/                | $$
+| $$  \__/  /$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$$| $$  \__/ /$$ /$$$$$$$   /$$$$$$$  /$$$$$$   /$$$$$$
 | $$       /$$__  $$ /$$__  $$ /$$__  $$ /$$__  $$| $$$$    | $$| $$__  $$ /$$__  $$ /$$__  $$ /$$__  $$
 | $$      | $$  \ $$| $$  \ $$| $$  \__/| $$  | $$| $$_/    | $$| $$  \ $$| $$  | $$| $$$$$$$$| $$  \__/
-| $$    $$| $$  | $$| $$  | $$| $$      | $$  | $$| $$      | $$| $$  | $$| $$  | $$| $$_____/| $$      
-|  $$$$$$/|  $$$$$$/|  $$$$$$/| $$      |  $$$$$$$| $$      | $$| $$  | $$|  $$$$$$$|  $$$$$$$| $$      
- \______/  \______/  \______/ |__/       \_______/|__/      |__/|__/  |__/ \_______/ \_______/|__/      
-                                                                                                        
+| $$    $$| $$  | $$| $$  | $$| $$      | $$  | $$| $$      | $$| $$  | $$| $$  | $$| $$_____/| $$
+|  $$$$$$/|  $$$$$$/|  $$$$$$/| $$      |  $$$$$$$| $$      | $$| $$  | $$|  $$$$$$$|  $$$$$$$| $$
+ \______/  \______/  \______/ |__/       \_______/|__/      |__/|__/  |__/ \_______/ \_______/|__/
+
                                              by LOKAI77
 """
 
@@ -48,7 +48,7 @@ def progress_bar_phase1(percent):
     """Display apt-style progress bar for Phase 1."""
     if not is_tty():
         return
-    
+
     width = get_terminal_width()
     label = f"[Progress {percent:.0f}%] "
     bar_width = width - len(label)
@@ -62,7 +62,7 @@ def counter_phase2(iteration, total_checked):
     """Display counter for Phase 2."""
     if not is_tty():
         return
-    
+
     width = get_terminal_width()
     message = f"Searching coordinates: iteration {iteration}, checked {total_checked}"
     padding = ' ' * (width - len(message))
@@ -135,7 +135,7 @@ def main():
                 best_solution = solution
                 best_method = method_name
                 log("New best solution found")
-            
+
             progress_bar_phase1(progress)
         except Exception as e:
             log(f"Method {method_name} failed: {str(e)}")
@@ -157,31 +157,31 @@ def main():
         log("Refinement improved solution")
 
     progress_bar_phase1(100)
-    
+
     estimated_lat, estimated_lon = best_solution
     residuals, rms_error = verify_solution(best_solution, reference_points, measured_distances)
 
     clear_status()
     log("Trilateration Results (Phase 1)")
     log(f"Best method: {best_method}")
-    log(f"Estimated Position: (Lat: {estimated_lat:.8f} Lng: {estimated_lon:.8f})")
+    log(f"Estimated Position: (Lat: {estimated_lat} Lng: {estimated_lon})")
     residual_str = "; ".join([f"{i+1}: {r:.2f}" for i, r in enumerate(residuals)])
     log(f"Residuals (errors in meters): ({residual_str})")
     log(f"RMS Error: {rms_error:.2f}m")
 
     log("Starting Final Position Refinement (Phase 2)")
-    log(f"Starting position: {estimated_lat:.8f}, {estimated_lon:.8f}")
-    
+    log(f"Starting position: {estimated_lat}, {estimated_lon}")
+
     for i in range(len(reference_points["lat"])):
-        log(f"Reference point {i+1}: {reference_points['lat'][i]:.8f}, {reference_points['lon'][i]:.8f}")
-    
+        log(f"Reference point {i+1}: {reference_points['lat'][i]}, {reference_points['lon'][i]}")
+
     for i, d in enumerate(measured_distances):
         log(f"Known distance {i+1}: {d:.2f}m")
 
     estimated_start = (estimated_lat, estimated_lon)
     final_point, best_errors, iterations, total_checked, best_total_error = refine_position(
-        estimated_start, 
-        reference_points, 
+        estimated_start,
+        reference_points,
         measured_distances,
         progress_callback=counter_phase2
     )
@@ -193,7 +193,7 @@ def main():
     log(f"Converged after {iterations} iterations ({total_checked} coordinates checked)")
     log(f"Total error: {best_total_error:.4f}m")
     log("")
-    log(f"Final position: {final_point[0]:.8f}, {final_point[1]:.8f}")
+    log(f"Final position: {final_point[0]}, {final_point[1]}")
     log("")
 
     for i, err in enumerate(best_errors):
